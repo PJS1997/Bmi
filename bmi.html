@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BMI</title>
+		<link rel="stylesheet" href="style/style.css">
+		<script> scr="js/script.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>>
+		<script type="text/javascript">
+		
+			function calculateBmi() {
+				var weight = document.bmiForm.weight.value
+
+				var height = document.bmiForm.height.value
+
+				if(weight > 29 && height > 129 && weight < 151 && height < 201){
+					var finalBmi = weight/(height/100*height/100)
+					document.bmiForm.bmi.value = finalBmi
+					if(finalBmi < 18.5){
+						document.bmiForm.meaning.value = "Underweight"
+					}
+					if(finalBmi > 18.5 && finalBmi < 25){
+						document.bmiForm.meaning.value = "Healthy"
+					}
+					if(finalBmi > 25){
+						document.bmiForm.meaning.value = "Overweight"
+					}
+				}
+				else{
+					alert("Error 447")
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form name="bmiForm"  class="login-form">
+			<h2>Body mass index </h2>
+				<div class="txtb">
+					<input type="number" name="weight" step="0.5" min="30" max="150">
+					<span data-placeholder="Weight(kg)"></span>
+				</div>
+			<div class="txtb">
+				<input type="number" name="height" min="130" max="200">
+				<span data-placeholder="Height(cm)"></span>
+			</div>
+
+			<input type="button" class="logbtn" value="BMI" onClick="calculateBmi()"><br />
+
+			<div class="txtb" name="weight">
+				<input type="text" name="bmi" >
+				<span data-placeholder=""></span>
+			</div>
+			<div class="txtb" name="weight">
+				<input type="text" name="meaning"  ><br />
+				<span data-placeholder=""></span>
+			</div>
+			<input type="reset" class="logbtn" value="Reset" />
+		</h4>
+		</form>
+		<script type="text/javascript">
+		$(".txtb input").on("focus",function(){
+		$(this).addClass("focus");
+	});
+		$(".txtb input").on("blur",function(){
+			if($(this).val()=="")
+		$(this).removeClass("focus");
+	});
+	</script>
+	</body>
+</html>
